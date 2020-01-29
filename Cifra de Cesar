@@ -1,0 +1,52 @@
+import os
+os.system('clear')
+tam_max = 26
+def Mod():
+    while True:
+        modo = input('''Encriptar ou Decriptar?
+        [E] Cifrar               [D] Decifrar\n-:''')
+        if modo in 'Cifrar Decifrar D E d e'.split():
+            return modo
+        else:
+            pass
+def Key():
+    Key = 0
+    while True:
+        Key = int = 3
+
+        if 1 <= Key <= 26:
+            return Key
+def mensagem(modo, msg, Key):
+    if modo[0] == 'd' or modo[0] == 'D':
+        Key *= -1
+
+    traducao = ''
+    for symbol in msg:
+        if symbol.isalpha():
+            num = ord(symbol)
+            num += Key
+
+            if symbol.isupper():
+                if num > ord('Z'):
+                    num -= 26
+                elif num < ord('A'):
+                    num += 26
+
+            elif symbol.islower():
+                if num > ord('z'):
+                    num -= 26
+                elif num < ord('a'):
+                    num += 26
+
+            traducao += chr(num)
+        else:
+            traducao += symbol
+
+    return traducao
+def Main():
+    modo = Mod()
+    msg = input('Digite a Mensagem:')
+    key = Key()
+    print('Sua mensagem cifrada é:')
+    print(mensagem(modo, msg, key).lower())
+init = Main()
